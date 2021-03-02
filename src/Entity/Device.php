@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\DeviceRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -46,6 +48,16 @@ class Device
      * @ORM\Column(type="datetime", nullable=true)
      */
     private $created_at;
+
+    /**
+     * @ORM\ManyToMany(targetEntity=Computer::class, mappedBy="devices")
+     */
+    private $computers;
+
+    public function __construct()
+    {
+        $this->computers = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -120,6 +132,33 @@ class Device
     public function setCreatedAt(?\DateTimeInterface $created_at): self
     {
         $this->created_at = $created_at;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Computer[]
+     */
+    public function getComputers(): Collection
+    {
+        return $this->computers;
+    }
+
+    public function addComputer(Computer $computer): self
+    {
+        if (!$this->computers->contains($computer)) {
+            $this->computers[] = $computer;
+            $computer->addDevice($this);
+        }
+
+        return $this;
+    }
+
+    public function removeComputer(Computer $computer): self
+    {
+        if ($this->computers->removeElement($computer)) {
+            $computer->removeDevice($this);
+        }
 
         return $this;
     }
