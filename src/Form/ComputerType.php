@@ -17,11 +17,11 @@ class ComputerType extends AbstractType
     {
         $builder
             ->add('name', TextType::class)
+            ->add('description', TextareaType::class)
             ->add('price', MoneyType::class, [
                 'currency' => 'EUR',
                 'divisor' => 100,
             ])
-            ->add('description', TextareaType::class)
             ->add('type', ChoiceType::class, [
                 'choices' => Computer::AVAILABLE_TYPES,
                 'multiple' => false,
