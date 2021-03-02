@@ -16,7 +16,10 @@ class DeviceType extends AbstractType
     {
         $builder
             ->add('name', TextType::class)
-            ->add('price', MoneyType::class)
+            ->add('price', MoneyType::class, [
+                'currency' => 'EUR',
+                'divisor' => 100,
+            ])
             ->add('brand', TextType::class)
             ->add('type', ChoiceType::class, [
                 'choices' => Device::AVAILABLE_TYPES,
