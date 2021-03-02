@@ -16,6 +16,7 @@ class ComponentType extends AbstractType
     {
         $builder
             ->add('name', TextType::class)
+            ->add('brand', TextType::class)
             ->add('price', MoneyType::class, [
                 'currency' => 'EUR',
                 'divisor' => 100,
@@ -25,7 +26,7 @@ class ComponentType extends AbstractType
                 'multiple' => false,
                 'expanded' => true,
             ])
-            ->add('brand', TextType::class)
+            
         ;
     }
 
