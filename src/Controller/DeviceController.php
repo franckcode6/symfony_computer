@@ -6,10 +6,13 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
+/**
+ * @Route("/device", name="device")
+ */
 class DeviceController extends AbstractController
 {
     /**
-     * @Route("/device", name="device")
+     * @Route("/", name="index")
      */
     public function index(): Response
     {

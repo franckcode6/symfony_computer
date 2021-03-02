@@ -6,10 +6,13 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
+/**
+ * @Route("/computer", name="computer")
+ */
 class ComputerController extends AbstractController
 {
     /**
-     * @Route("/computer", name="computer")
+     * @Route("/", name="index")
      */
     public function index(): Response
     {
