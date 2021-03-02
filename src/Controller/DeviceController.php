@@ -11,7 +11,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/device", name="device")
+ * @Route("/device", name="device_")
  */
 class DeviceController extends AbstractController
 {
@@ -33,14 +33,6 @@ class DeviceController extends AbstractController
         $device = new Device();
 
         $form = $this->createForm(DeviceType::class, $device);
-        /*$form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            $entityManager->persist($device);
-            $entityManager->flush();
-
-            return $this->redirectToRoute('device_index');
-        }*/
 
         return $this->render('device/new.html.twig', [
             'formDevice' => $form->createView(),

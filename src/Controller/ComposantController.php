@@ -9,7 +9,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/composant", name="composant")
+ * @Route("/composant", name="composant_")
  */
 class ComposantController extends AbstractController
 {
@@ -30,7 +30,7 @@ class ComposantController extends AbstractController
     {
         $component = new Component();
 
-        $form = $this->createForm( ComponentType::class, $component);
+        $form = $this->createForm(ComponentType::class, $component);
 
         return $this->render('composant/new.html.twig', [
             'formComponent' => $form->createView(),
