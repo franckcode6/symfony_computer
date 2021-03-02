@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\ComputerRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -46,6 +48,22 @@ class Computer
      * @ORM\Column(type="datetime", nullable=true)
      */
     private $updated_at;
+
+    /**
+     * @ORM\ManyToMany(targetEntity=Component::class, inversedBy="computers")
+     */
+    private $components;
+
+    /**
+     * @ORM\ManyToMany(targetEntity=Device::class, inversedBy="computers")
+     */
+    private $devices;
+
+    public function __construct()
+    {
+        $this->components = new ArrayCollection();
+        $this->devices = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -120,6 +138,54 @@ class Computer
     public function setUpdatedAt(?\DateTimeInterface $updated_at): self
     {
         $this->updated_at = $updated_at;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Component[]
+     */
+    public function getComponents(): Collection
+    {
+        return $this->components;
+    }
+
+    public function addComponent(Component $component): self
+    {
+        if (!$this->components->contains($component)) {
+            $this->components[] = $component;
+        }
+
+        return $this;
+    }
+
+    public function removeComponent(Component $component): self
+    {
+        $this->components->removeElement($component);
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Device[]
+     */
+    public function getDevices(): Collection
+    {
+        return $this->devices;
+    }
+
+    public function addDevice(Device $device): self
+    {
+        if (!$this->devices->contains($device)) {
+            $this->devices[] = $device;
+        }
+
+        return $this;
+    }
+
+    public function removeDevice(Device $device): self
+    {
+        $this->devices->removeElement($device);
 
         return $this;
     }
