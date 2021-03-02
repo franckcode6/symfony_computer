@@ -12,6 +12,13 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Computer
 {
+    const AVAILABLE_TYPES = [
+        'Ordinateur fixe' => 'computeur',
+        'Tablette' => 'tablet',
+        'Ordinateur portable' => 'laptop',
+    ];
+
+
     /**
      * @ORM\Id
      * @ORM\GeneratedValue
