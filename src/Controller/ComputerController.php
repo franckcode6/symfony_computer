@@ -9,12 +9,12 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/computer", name="computer_")
+ * @Route("/computer", name="computer")
  */
 class ComputerController extends AbstractController
 {
     /**
-     * @Route("/", name="index")
+     * @Route("/", name="computer_index")
      */
     public function index(): Response
     {
@@ -24,7 +24,7 @@ class ComputerController extends AbstractController
     }
 
     /**
-     * @Route("/new", name="new")
+     * @Route("/new", name="computer_new")
      */
     public function new(): Response
     {

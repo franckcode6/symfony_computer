@@ -9,12 +9,12 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/composant", name="composant_")
+ * @Route("/composant", name="composant")
  */
 class ComposantController extends AbstractController
 {
     /**
-     * @Route("/", name="index")
+     * @Route("/", name="composant_index")
      */
     public function index(): Response
     {
@@ -24,7 +24,7 @@ class ComposantController extends AbstractController
     }
 
     /**
-     * @Route("/new", name="new")
+     * @Route("/new", name="composant_new")
      */
     public function new(): Response
     {

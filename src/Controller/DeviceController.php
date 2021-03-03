@@ -11,12 +11,12 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/device", name="device_")
+ * @Route("/device", name="device")
  */
 class DeviceController extends AbstractController
 {
     /**
-     * @Route("/", name="index")
+     * @Route("/", name="device_index")
      */
     public function index(): Response
     {
@@ -26,7 +26,7 @@ class DeviceController extends AbstractController
     }
 
     /**
-     * @Route("/new", name="new")
+     * @Route("/new", name="device_new")
      */
     public function new(): Response
     {
