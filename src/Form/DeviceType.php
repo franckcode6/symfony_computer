@@ -23,6 +23,7 @@ class DeviceType extends AbstractType
             ])
             ->add('type', ChoiceType::class, [
                 'choices' => Device::AVAILABLE_TYPES,
+                'expanded' => true,
             ])
         ;
     }
