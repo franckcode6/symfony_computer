@@ -4,4 +4,9 @@
 {% endblock %}
 
 {% block body %}
-	{{ form(formDevice) }}{% endblock %}
+	{{ form_start(formDevice) }}
+	{{ form_rest(formDevice) }}
+
+	<button type="submit" class="btn btn-danger">Valider</button>
+	{{ form_end(formDevice) }}
+{% endblock %}
