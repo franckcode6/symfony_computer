@@ -24,7 +24,6 @@
 		{% for device in devices %}
 			<tr>
 				<th scope="row">{{ device.id }}</th>
-
 				<td>{{ device.name }}</td>
 				<td>{{ device.brand }}</td>
 				<td>{{ device.price }}€</td>
@@ -32,4 +31,5 @@
 			</tr>
 		{% endfor %}
 	</table>
+	<a href=" {{ path('device_new') }}">Ajouter un nouveau périphérique</a>
 {% endblock %}

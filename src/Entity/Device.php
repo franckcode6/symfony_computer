@@ -66,7 +66,6 @@ class Device
     {
         $this->computers = new ArrayCollection();
         $this->created_at = new DateTime();
-        $this->uptaded_at = new DateTime();
     }
 
     public function getId(): ?int

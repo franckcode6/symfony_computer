@@ -21,9 +21,9 @@ class DeviceRepository extends ServiceEntityRepository
 
     public function findForIndex()
     {
-        $qb = $this->createQueryBuilder('c');
+        $qb = $this->createQueryBuilder('d');
         $qb
-        ->orderBy('c.name', 'ASC')
+        ->orderBy('d.name', 'ASC')
         ;
 
         return $qb->getQuery()->getResult();
