@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Repository\ComponentRepository;
+use DateTime;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
@@ -41,7 +42,7 @@ class Component
     private $type;
 
     /**
-     * @ORM\Column(type="datetime")
+     * @ORM\Column(type="datetime", nullable=true)
      */
     private $created_at;
 
@@ -63,6 +64,8 @@ class Component
     public function __construct()
     {
         $this->computers = new ArrayCollection();
+        $this->created_at = new DateTime();
+        $this->uptaded_at = new DateTime();
     }
 
     public function getId(): ?int

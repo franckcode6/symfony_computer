@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Repository\DeviceRepository;
+use DateTime;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
@@ -64,6 +65,8 @@ class Device
     public function __construct()
     {
         $this->computers = new ArrayCollection();
+        $this->created_at = new DateTime();
+        $this->uptaded_at = new DateTime();
     }
 
     public function getId(): ?int
