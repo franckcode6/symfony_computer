@@ -9,17 +9,17 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/composant", name="composant")
+ * @Route("/component", name="component_")
  */
-class ComposantController extends AbstractController
+class ComponentController extends AbstractController
 {
     /**
      * @Route("/", name="composant_index")
      */
     public function index(): Response
     {
-        return $this->render('composant/index.html.twig', [
-            'controller_name' => 'ComposantController',
+        return $this->render('component/index.html.twig', [
+            'controller_name' => 'ComponentController',
         ]);
     }
 
@@ -32,7 +32,7 @@ class ComposantController extends AbstractController
 
         $form = $this->createForm(ComponentType::class, $component);
 
-        return $this->render('composant/new.html.twig', [
+        return $this->render('component/new.html.twig', [
             'formComponent' => $form->createView(),
         ]);
     }
