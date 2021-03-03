@@ -19,32 +19,13 @@ class DeviceRepository extends ServiceEntityRepository
         parent::__construct($registry, Device::class);
     }
 
-    // /**
-    //  * @return Device[] Returns an array of Device objects
-    //  */
-    /*
-    public function findByExampleField($value)
+    public function findForIndex()
     {
-        return $this->createQueryBuilder('d')
-            ->andWhere('d.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('d.id', 'ASC')
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult()
+        $qb = $this->createQueryBuilder('c');
+        $qb
+        ->orderBy('c.name', 'ASC')
         ;
-    }
-    */
 
-    /*
-    public function findOneBySomeField($value): ?Device
-    {
-        return $this->createQueryBuilder('d')
-            ->andWhere('d.exampleField = :val')
-            ->setParameter('val', $value)
-            ->getQuery()
-            ->getOneOrNullResult()
-        ;
+        return $qb->getQuery()->getResult();
     }
-    */
 }
