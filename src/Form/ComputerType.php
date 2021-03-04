@@ -27,6 +27,8 @@ class ComputerType extends AbstractType
                 'multiple' => false,
                 'expanded' => true,
             ])
+            ->add('devices')
+            ->add('components')
         ;
     }
 
