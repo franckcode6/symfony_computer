@@ -3,6 +3,7 @@
 {% block title %}Liste des Composants{% endblock %}
 
 {% block body %}
+<main class="container mt-5">
     <table class="table">
         <thead class="thead-dark">
             <tr>
@@ -33,6 +34,7 @@
      </table>
 
     <a href=" {{ path('component_new') }}" class="btn btn-success">Ajouter un composant</a>
+</main>
 {% endblock %}
 
 
