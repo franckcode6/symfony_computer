@@ -19,6 +19,14 @@ class ComponentRepository extends ServiceEntityRepository
         parent::__construct($registry, Component::class);
     }
 
+    public function findAll()
+    {
+        $qb = $this->createQueryBuilder('c');
+        $qb->orderBy('c.id', 'ASC');
+
+        return $qb->getQuery()->getResult();
+    }
+
     // /**
     //  * @return Component[] Returns an array of Component objects
     //  */
