@@ -1,20 +1,41 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello ComponentController!{% endblock %}
+{% block title %}Liste des périphériques
+{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+	<main class="container mt-5">
+		<table class="table">
+			<thead class="thead-dark">
+				<tr>
+					<th scope="col">Identifiant</th>
+					<th scope="col">Nom</th>
+					<th scope="col">Marque</th>
+					<th scope="col">Prix</th>
+					<th scope="col">Type</th>
+					<th scope="col">Actions</th>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+				</tr>
+			</thead>
+			{% set i = 1 %}
+			{% for device in devices %}
+				<tr>
+					<th scope="row">{{ i }}</th>
+					<td>{{ device.name }}</td>
+					<td>{{ device.brand }}</td>
+					<td>{{ device.price /100 }}
+						€</td>
+					<td>{{ device.type }}</td>
+					<td>
+						<a href=" {{ path('device_edit', {id : device.id,}) }}" class="btn btn-primary">Modifier</a>
+						<a href=" {{ path('device_remove', {id : device.id,}) }}" class="btn btn-danger">Supprimer</a>
+					</td>
+				</tr>
+				{% set i = i + 1 %}
+			{% endfor %}
+		</table>
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'D:/Work/Symfony/symfony_component/src/Controller/ComponentController.php'|file_link(0) }}">src/Controller/ComponentController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'D:/Work/Symfony/symfony_component/templates/component/index.html.twig'|file_link(0) }}">templates/component/index.html.twig</a></code></li>
-    </ul>
-</div>
+		<a href=" {{ path('device_new') }}" class="btn btn-success">Ajouter</a>
+	</main>
+
 {% endblock %}
