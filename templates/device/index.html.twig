@@ -4,34 +4,38 @@
 {% endblock %}
 
 {% block body %}
-	<table class="table">
-		<thead class="thead-dark">
-			<tr>
-				<th scope="col">Identifiant</th>
-				<th scope="col">Nom</th>
-				<th scope="col">Marque</th>
-				<th scope="col">Prix</th>
-				<th scope="col">Type</th>
-				<th scope="col">Actions</th>
+	<main class="container mt-5">
+		<table class="table">
+			<thead class="thead-dark">
+				<tr>
+					<th scope="col">Identifiant</th>
+					<th scope="col">Nom</th>
+					<th scope="col">Marque</th>
+					<th scope="col">Prix</th>
+					<th scope="col">Type</th>
+					<th scope="col">Actions</th>
 
-			</tr>
-		</thead>
+				</tr>
+			</thead>
+			{% set i = 1 %}
+			{% for device in devices %}
+				<tr>
+					<th scope="row">{{ i }}</th>
+					<td>{{ device.name }}</td>
+					<td>{{ device.brand }}</td>
+					<td>{{ device.price /100 }}
+						€</td>
+					<td>{{ device.type }}</td>
+					<td>
+						<a href=" {{ path('device_edit', {id : device.id,}) }}" class="btn btn-primary">Modifier</a>
+						<a href=" {{ path('device_remove', {id : device.id,}) }}" class="btn btn-danger">Supprimer</a>
+					</td>
+				</tr>
+				{% set i = i + 1 %}
+			{% endfor %}
+		</table>
 
-		{% for device in devices %}
-			<tr>
-				<th scope="row">{{ device.id }}</th>
-				<td>{{ device.name }}</td>
-				<td>{{ device.brand }}</td>
-				<td>{{ device.price }}€</td>
-				<td>{{ device.type }}</td>
-				<td>
-					<a href=" {{ path('device_edit', {id : device.id,}) }}" class="btn btn-primary">Modifier</a>
-					<a href=" {{ path('device_remove', {id : device.id,}) }}" class="btn btn-danger">Supprimer</a>
-				</td>
-			</tr>
-		{% endfor %}
-	</table>
-
-	<a href=" {{ path('device_new') }}" class="btn btn-primary">Ajouter</a>
+		<a href=" {{ path('device_new') }}" class="btn btn-success">Ajouter</a>
+	</main>
 
 {% endblock %}
