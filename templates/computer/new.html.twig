@@ -3,5 +3,14 @@
 {% block title %}Hello ComputerController!{% endblock %}
 
 {% block body %}
-{{form(formComputer)}}
+	<main class = "container mt-5">
+   	 	{{ form_start(formComputer) }}
+		{{ form_rest(formComputer) }}
+
+	<a href=" {{ path('computer_index') }}" class="btn btn-secondary">Retour à l'index</a>
+	<button type="submit" class="btn btn-danger">Valider</button>
+
+		
+		{{ form_end(formComputer) }}
+	</main>
 {% endblock %}
