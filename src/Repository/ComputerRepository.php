@@ -19,6 +19,14 @@ class ComputerRepository extends ServiceEntityRepository
         parent::__construct($registry, Computer::class);
     }
 
+    public function findAll()
+    {
+        $qb = $this->createQueryBuilder('c');
+        $qb->orderBy('c.id', 'ASC');
+
+        return $qb->getQuery()->getResult();
+    }
+
     // /**
     //  * @return Computer[] Returns an array of Computer objects
     //  */
