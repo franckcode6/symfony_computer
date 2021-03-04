@@ -7,9 +7,7 @@
 	<h2>Ajouter un périphérique</h2>
 	{{ form_start(formDevice) }}
 	{{ form_rest(formDevice) }}
-
 	<button type="submit" class="btn btn-danger">Valider</button>
 	{{ form_end(formDevice) }}
-	<a href=" {{ path('device_index') }}">Liste des périphériques</a>
-
-{% endblock %}
+</br>
+<a href=" {{ path('device_index') }}" class="btn btn-secondary">Liste des périphériques</a>{% endblock %}

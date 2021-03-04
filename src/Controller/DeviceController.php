@@ -28,24 +28,27 @@ class DeviceController extends AbstractController
 
     /**
      * @Route("/new", name="new")
-     * @Route("/{id}/edit", )
+     * @Route("/{id}/edit", name="edit")
+     *
+     * @param Request $request
+     * @param EntityManagerInterface $entityManager
+     * @param Device|null $device
      */
-    public function new(Request $request, EntityManagerInterface $em): Response
+    public function new(Request $request, EntityManagerInterface $entityManager, Device $device = null): Response
     {
-        $device = new Device();
-
+        if (empty($device)) {
+            $device = new Device();
+        }
+        
         $form = $this->createForm(DeviceType::class, $device, [
             'method' => 'POST',
-            'action' => $this->generateUrl('device_new'),
         ]);
-
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $device->setUpdatedAt(new DateTime());
-
-            $em->persist($device);
-            $em->flush();
+            $entityManager->persist($device);
+            $entityManager->flush();
 
             return $this->redirectToRoute('device_index');
         }
@@ -53,5 +56,16 @@ class DeviceController extends AbstractController
         return $this->render('device/new.html.twig', [
             'formDevice' => $form->createView(),
         ]);
+    }
+
+    /**
+     * @Route("/{id}/remove", name="remove")
+     */
+    public function remove(Device $device, EntityManagerInterface $entityManager)
+    {
+        $entityManager->remove($device);
+        $entityManager->flush();
+
+        return $this->redirectToRoute('device_index');
     }
 }

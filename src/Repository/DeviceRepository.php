@@ -19,11 +19,11 @@ class DeviceRepository extends ServiceEntityRepository
         parent::__construct($registry, Device::class);
     }
 
-    public function findForIndex()
+    public function findAll()
     {
         $qb = $this->createQueryBuilder('d');
         $qb
-        ->orderBy('d.name', 'ASC')
+        ->orderBy('d.id', 'ASC')
         ;
 
         return $qb->getQuery()->getResult();
