@@ -1,35 +1,42 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Liste des supports{% endblock %}
+{% block title %}Liste des supports
+{% endblock %}
 
 {% block body %}
-    <main class = "container mt-5">
+	<main class="container mt-5">
 
-    <table class="table">
-        <thread class="thread-dark">
-            <tr>
-                <th scope="col">Nom</th>
-                <th scope="col">Description</th>
-                <th scope="col">Prix</th>
-                <th scope="col">Type</th>
-            </tr>
-        </thread>
+		<table class="table">
+			<thead class="thead-dark">
+				<tr>
+					<th scope="col">Identifiant</th>
+					<th scope="col">Nom</th>
+					<th scope="col">Description</th>
+					<th scope="col">Prix</th>
+					<th scope="col">Type</th>
+					<th scope="col">Actions</th>
+				</tr>
+			</thead>
+		</thread>
+		{% set i = 1 %}
 
-        {% for computer in computers %}
-            <tr>
-                <th scope="row">{{ computer.id }}</th>
-                    <td>{{ computer.name }}</td>
-                    <td>{{ computer.description }}</td>
-                    <td>{{ computer.price /100 }} €</td>
-                    <td>{{ computer.type }}</td>
-                    <td>
-                        <a href=" {{ path('computer_edit', {id : computer.id,}) }}" class="btn btn-primary">Modifier</a>
-                        <a href=" {{ path('computer_remove', {id : computer.id,}) }}" class="btn btn-danger">Supprimer</a>
-                    </td> 
-            </tr>
-        {% endfor %}
-      </table> 
+		{% for computer in computers %}
+			<tr>
+				<th scope="row">{{ computer.id }}</th>
+				<td>{{ computer.name }}</td>
+				<td>{{ computer.description }}</td>
+				<td>{{ computer.price /100 }}
+					€</td>
+				<td>{{ computer.type }}</td>
+				<td>
+					<a href=" {{ path('computer_edit', {id : computer.id,}) }}" class="btn btn-primary">Modifier</a>
+					<a href=" {{ path('computer_remove', {id : computer.id,}) }}" class="btn btn-danger">Supprimer</a>
+				</td>
+			</tr>
+			{% set i = i + 1 %}
 
-    <a href=" {{ path('computer_new') }}" class="btn btn-primary">Ajouter</a>
-    </main>
-{% endblock %}
+		{% endfor %}
+	</table>
+
+	<a href=" {{ path('computer_new') }}" class="btn btn-primary">Ajouter</a>
+</main>{% endblock %}

@@ -15,7 +15,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 class Computer
 {
     const AVAILABLE_TYPES = [
-        'Ordinateur fixe' => 'computeur',
+        'Ordinateur fixe' => 'computer',
         'Tablette' => 'tablet',
         'Ordinateur portable' => 'laptop',
     ];
