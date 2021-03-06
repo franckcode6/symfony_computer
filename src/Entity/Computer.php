@@ -3,9 +3,11 @@
 namespace App\Entity;
 
 use App\Repository\ComputerRepository;
+use DateTime;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=ComputerRepository::class)
@@ -13,7 +15,7 @@ use Doctrine\ORM\Mapping as ORM;
 class Computer
 {
     const AVAILABLE_TYPES = [
-        'Ordinateur fixe' => 'computeur',
+        'Ordinateur fixe' => 'computer',
         'Tablette' => 'tablet',
         'Ordinateur portable' => 'laptop',
     ];
@@ -28,6 +30,7 @@ class Computer
 
     /**
      * @ORM\Column(type="string", length=128)
+     * @Assert\NotBlank()
      */
     private $name;
 
@@ -70,6 +73,8 @@ class Computer
     {
         $this->components = new ArrayCollection();
         $this->devices = new ArrayCollection();
+        $this->created_at = new DateTime();
+        $this->uptaded_at = new DateTime();
     }
 
     public function getId(): ?int
@@ -195,5 +200,10 @@ class Computer
         $this->devices->removeElement($device);
 
         return $this;
+    }
+
+    public function __toString()
+    {
+        return $this->getName();
     }
 }

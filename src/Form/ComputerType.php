@@ -2,7 +2,10 @@
 
 namespace App\Form;
 
+use App\Entity\Component;
 use App\Entity\Computer;
+use App\Entity\Device;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\MoneyType;
@@ -17,14 +20,24 @@ class ComputerType extends AbstractType
     {
         $builder
             ->add('name', TextType::class)
+            ->add('description', TextareaType::class)
             ->add('price', MoneyType::class, [
                 'currency' => 'EUR',
                 'divisor' => 100,
             ])
-            ->add('description', TextareaType::class)
             ->add('type', ChoiceType::class, [
                 'choices' => Computer::AVAILABLE_TYPES,
                 'multiple' => false,
+                'expanded' => true,
+            ])
+            ->add('devices', EntityType::class, [
+                'class' => Device::class,
+                'multiple' => true,
+                'expanded' => true,
+            ])
+            ->add('components', EntityType::class, [
+                'class' => Component::class,
+                'multiple' => true,
                 'expanded' => true,
             ])
         ;

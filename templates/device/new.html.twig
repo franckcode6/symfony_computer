@@ -1,7 +1,16 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}New device
+{% block title %}Nouveau Périphérique
 {% endblock %}
 
 {% block body %}
-	{{ form(formDevice) }}{% endblock %}
+	<main class="container mt-5">
+
+		<h2>Ajouter un périphérique</h2>
+		{{ form_start(formDevice) }}
+		{{ form_rest(formDevice) }}
+		<button type="submit" class="btn btn-success">Valider</button>
+		{{ form_end(formDevice) }}
+	</br>
+	<a href=" {{ path('device_index') }}" class="btn btn-secondary">Liste des périphériques</a>
+</main>{% endblock %}

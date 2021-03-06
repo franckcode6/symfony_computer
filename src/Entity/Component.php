@@ -3,9 +3,11 @@
 namespace App\Entity;
 
 use App\Repository\ComponentRepository;
+use DateTime;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=ComponentRepository::class)
@@ -27,6 +29,8 @@ class Component
 
     /**
      * @ORM\Column(type="string", length=128)
+     * @Assert\NotBlank()
+     * @Assert\Length(min=2)
      */
     private $name;
 
@@ -41,12 +45,14 @@ class Component
     private $type;
 
     /**
-     * @ORM\Column(type="datetime")
+     * @ORM\Column(type="datetime", nullable=true)
      */
     private $created_at;
 
     /**
      * @ORM\Column(type="string", length=50)
+     * @Assert\NotBlank()
+     * @Assert\Length(min=2)
      */
     private $brand;
 
@@ -63,6 +69,8 @@ class Component
     public function __construct()
     {
         $this->computers = new ArrayCollection();
+        $this->created_at = new DateTime();
+        $this->uptaded_at = new DateTime();
     }
 
     public function getId(): ?int
@@ -167,5 +175,10 @@ class Component
         }
 
         return $this;
+    }
+
+    public function __toString()
+    {
+        return $this->getName().' ( '.$this->getType().' ) ';
     }
 }
