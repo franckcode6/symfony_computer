@@ -4,13 +4,13 @@
 {% endblock %}
 
 {% block body %}
-	<main class="container mt-5">
-		<h2>Ajouter un periphérique</h2>
-		{{ form_start(formComponent) }}
-		{{ form_rest(formComponent) }}
-		<button type="submit" class="btn btn-success">Valider</button>
-		{{ form_end(formComponent) }}
-		<br>
-		<a href=" {{ path('component_index') }}" class="btn btn-secondary">Liste des périphériques</a>
-	</main>
+    <main class="container mt-5">
+        <h2>Ajouter un periphérique</h2>
+        {{ form_start(formComponent) }}
+        {{ form_rest(formComponent) }}
+        <button type="submit" class="btn btn-success">Valider</button>
+        {{ form_end(formComponent) }}
+        <br>
+        <a href=" {{ path('component_index') }}" class="btn btn-secondary">Liste des périphériques</a>
+    </main>
 {% endblock %}
