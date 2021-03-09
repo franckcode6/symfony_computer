@@ -39,7 +39,7 @@ class DeviceController extends AbstractController
         if (empty($device)) {
             $device = new Device();
         }
-        
+
         $form = $this->createForm(DeviceType::class, $device, [
             'method' => 'POST',
         ]);
